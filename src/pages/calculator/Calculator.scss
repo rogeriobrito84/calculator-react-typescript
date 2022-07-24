@@ -1,0 +1,15 @@
+.Calculator {
+    width: 40vw;
+    height: 60vh;
+    border-radius: 0.3em;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: 7em 5em 5em 5em 5em 5em;
+
+}
+
+.Calculator * {
+    font-weight: bold;
+    font-size: 2.1em;
+}
