@@ -6,15 +6,15 @@ type DisplayProps = {
     minFont: number;
 };
 
+let font: number = 1;
 
 const Display = (props: PropsWithChildren<DisplayProps>) => {
     const display = useRef(null);
     const displayInput = useRef(null);
-    let font: number = 1;
 
     useEffect(() => {
-        font = props.maxFont;
         window.addEventListener("resize", resizeEvent);
+        font = props.maxFont;
     }, []);
 
     useEffect(() => {

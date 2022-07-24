@@ -23,7 +23,6 @@ const Calculator = (props: PropsWithChildren<CalculatorProps>) => {
 
 
     useEffect(() => {
-        clearMemory();
         window.addEventListener("keydown", keyDown);
     }, []);
 

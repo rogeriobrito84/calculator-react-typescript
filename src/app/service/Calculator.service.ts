@@ -1,4 +1,3 @@
-import { isConstructorDeclaration } from "typescript";
 import { CharacterEnum } from "../enums/CharacterEnum";
 
 export class CalculatorService {
@@ -47,8 +46,8 @@ export class CalculatorService {
             this.clearDisplay = false;
         }
 
-        if ((digit === CharacterEnum.ZERO) && displayValue == CharacterEnum.ZERO) return CharacterEnum.ZERO;
-        if ((digit === CharacterEnum.DOT) && displayValue == CharacterEnum.ZERO) return CharacterEnum.ZERO + CharacterEnum.DOT;
+        if ((digit === CharacterEnum.ZERO) && displayValue === CharacterEnum.ZERO) return CharacterEnum.ZERO;
+        if ((digit === CharacterEnum.DOT) && displayValue === CharacterEnum.ZERO) return CharacterEnum.ZERO + CharacterEnum.DOT;
         if (displayValue.includes(CharacterEnum.DOT) && digit === CharacterEnum.DOT) return displayValue;
         if (displayValue === CharacterEnum.ZERO) return digit;
 
@@ -58,13 +57,13 @@ export class CalculatorService {
 
     public setDisplayOperation(displayValue: string, operation: string): string {
         if (displayValue === this.NOT_DIVISION_ZERO) displayValue = this.valules[0];
-        if (this.valules.length == 0) {
+        if (this.valules.length === 0) {
             this.valules[0] = displayValue;
-        } else if (this.valules.length == 1 && !this.clearDisplay) {
+        } else if (this.valules.length === 1 && !this.clearDisplay) {
             this.valules[1] = displayValue;
         }
 
-        if (this.valules.length == 2) {
+        if (this.valules.length === 2) {
             if (this.operation === CharacterEnum.DIVISION && this.valules[1] === "0") {
                 this.valules = [this.valules[0]];
                 displayValue = this.NOT_DIVISION_ZERO;
