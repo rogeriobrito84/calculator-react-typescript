@@ -10,14 +10,14 @@ type ButtonPropos = {
 }
 
 const Button = (props: PropsWithChildren<ButtonPropos>) => {
-    let cls = "button Animate ";
-    cls += props.operation ? "operation" : "";
-    cls += props.double ? "double " : ""
-    cls += props.tripe ? "tripe " : ""
+  let cls = "button Animate ";
+  cls += props.operation ? "operation" : ""; 
+  cls += props.double ? "double " : "";
+  cls += props.tripe ? "tripe " : "";
 
-    return <button className={cls}
-        onClick={() => props.click && props.click(props.label)} >
-        {props.label} </button>
-}
+  return <button className={cls}
+    onClick={() => props.click && props.click(props.label)} >
+    {props.label} </button>;
+};
 
 export default Button;
