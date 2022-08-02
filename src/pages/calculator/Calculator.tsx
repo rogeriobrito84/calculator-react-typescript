@@ -1,4 +1,4 @@
-import { PropsWithChildren, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { CharacterEnum } from "../../app/enums/CharacterEnum";
 import { CalculatorService } from "../../app/service/Calculator.service";
 import Button from "../../components/Button";
@@ -11,11 +11,7 @@ const KeyBackSpace = "Backspace";
 const Keydecimal = [".", ","];
 const KeyClean = ["Delete", "Escape"];
 
-type CalculatorProps = {
-  event?: KeyboardEvent;
-}
-
-const Calculator = (props: PropsWithChildren<CalculatorProps>) => {
+const Calculator = () => {
 
   const service = CalculatorService.getInstance();
   const [displayValue, setDisplay] = useState(CharacterEnum.ZERO.toString());
@@ -29,12 +25,12 @@ const Calculator = (props: PropsWithChildren<CalculatorProps>) => {
       window.removeEventListener("keydown", keyDown);
     };
   }, []);
-  
+
   useEffect(() => {
-    
+
     const handleKeyDown = (displayValue: string) => {
       if (key) {
-        let valueDisplay = CharacterEnum.ZERO.toString() ;
+        let valueDisplay = CharacterEnum.ZERO.toString();
         if (keyNumber.includes(key)) {
           let digit = key;
           if (Keydecimal.includes(key)) digit = CharacterEnum.DOT;
@@ -55,14 +51,14 @@ const Calculator = (props: PropsWithChildren<CalculatorProps>) => {
     };
 
     handleKeyDown(displayValue);
-    setKey(k => k = "");
+    setKey(() => "");
   }, [key, service, displayValue]);
-  
+
   const clearMemory = () => {
     const valueDisplay = service.clearMemoryDisplay();
     setDisplay(valueDisplay);
   };
-  
+
   const addDigit = (digit: string) => {
     const valueDisplay = service.getDisplayNumber(displayValue, digit);
     setDisplay(valueDisplay);
@@ -77,11 +73,11 @@ const Calculator = (props: PropsWithChildren<CalculatorProps>) => {
     const valueDisplay = service.backSpace(displayValue);
     setDisplay(valueDisplay);
   };
-  
+
   const keyDown = (event: KeyboardEvent) => {
     setKey(event.key);
   };
-  
+
   return <div className="Calculator">
     <Display minFont={15} maxFont={60} >{displayValue} </Display>
     <Button label={CharacterEnum.DELETE} double click={clearMemory} />

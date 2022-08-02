@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode, useEffect, useRef } from "react";
+import { PropsWithChildren, useEffect, useRef } from "react";
 import "./Display.css";
 
 type DisplayProps = {
